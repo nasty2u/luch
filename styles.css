@@ -1,3 +1,8 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* убираем горизонтальную прокрутку */
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -41,8 +46,9 @@ header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  width: 100%;
-  padding: 0 1rem; /* уменьшил паддинг */
+  width: 100vw;       /* полная ширина viewport, без лишнего */
+  max-width: 100%;    /* на всякий случай */
+  padding: 0 0.5rem;  /* минимальный паддинг */
   box-sizing: border-box;
 }
 
@@ -53,8 +59,8 @@ header {
 .nav-links {
   display: flex;
   justify-content: center;
-  gap: 2rem; /* уменьшил для мобильных */
-  list-style: none;
+  flex-wrap: wrap; /* чтобы не ломалось на маленьких экранах */
+  gap: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -225,14 +231,13 @@ section h2 {
 }
 
 
-.product-gallery img {
+.product-gallery img,
+.gallery-grid img {
   width: 100%;
-  max-width: 700px; /* максимум */
-  height: auto; /* чтобы сохранялось соотношение */
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 5px;
-  cursor: pointer;
+  max-width: 700px; /* или 90% для мобильных */
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .product-details {
